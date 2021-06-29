@@ -1,8 +1,9 @@
-export let CST = {
-
-    INTRO = "INTRO",
-    MENU = "MENU",
-    GAMEWORLD = "GAMEWORLD"
-
+export const CST = {
+SCENES:{
+    INTRO:"INTRO",
+    MENU:"MENU",
+    GAMESCENE:"GAMESCENE",
+    SETTINGS:"SETTINGS"
+}
 
 } ;

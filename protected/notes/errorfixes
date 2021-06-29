@@ -1,0 +1,5 @@
+parcel wont start due to script execution prevention:
+
+Open Windows PowerShell and enter: Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
+
+/////////////////////////////////////////////////////////////////////////////////
