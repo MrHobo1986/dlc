@@ -2,7 +2,7 @@
   "name": "dickylecock",
   "version": "1.0.0",
   "description": "a game",
-  "main": "index.js",
+  "main": "./src/index.js",
   "dependencies": {},
   "devDependencies": {},
   "scripts": {
