@@ -246,7 +246,10 @@ var introScene = /*#__PURE__*/function (_Phaser$Scene) {
     value: function init() {}
   }, {
     key: "preload",
-    value: function preload() {}
+    value: function preload() {
+      this.load.image("wm_bg000", './assets/graphics/backgrounds/wm_bg000.png');
+      this.load.image("dicky000", './assets/graphics/player/dicky000.png');
+    }
   }, {
     key: "create",
     value: function create() {
@@ -314,7 +317,9 @@ var menuScene = /*#__PURE__*/function (_Phaser$Scene) {
     value: function preload() {}
   }, {
     key: "create",
-    value: function create() {}
+    value: function create() {
+      this.add.image(400, 300, 'dicky000');
+    }
   }, {
     key: "update",
     value: function update() {}
@@ -367,7 +372,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51898" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49609" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
