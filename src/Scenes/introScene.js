@@ -10,11 +10,13 @@ export  class introScene extends Phaser.Scene
 
     init()
     {
-
+       
     }
 
     preload()
     {
+
+            
             this.load.image("wm_bg000",'./assets/graphics/backgrounds/wm_bg000.png');
 
             this.load.image("mm_bg000",'./assets/graphics/backgrounds/mm_bg000.png');
@@ -26,14 +28,33 @@ export  class introScene extends Phaser.Scene
             this.load.image("quit",'./assets/graphics/ui/quit.png');           
             this.load.image("dicky000",'./assets/graphics/player/dicky000.png');
             this.load.image("dicky001",'./assets/graphics/player/dicky001.png');
+            
+
+            this.load.audio("000",'./assets/audio/music/000.mp3')
 
 
+
+            let loadingBar = this.add.graphics({
+                fillStyle:{
+                    color: 0xffffff
+                }
+            });
+
+            this.load.on("progress", (percent)=>{
+                loadingBar.fill(0,300, 400*percent,50)
+                   console.log(percent); 
+            });
+
+            this.load.on("complete", ()=>{
+                   console.log('done'); 
+                   this.scene.start(CST.SCENES.MENU);
+            })
             
     }
 
     create()
     {
-        this.scene.start(CST.SCENES.MENU);
+        //this.scene.start(CST.SCENES.MENU);
     }
 
     update()

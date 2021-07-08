@@ -247,6 +247,8 @@ var introScene = /*#__PURE__*/function (_Phaser$Scene) {
   }, {
     key: "preload",
     value: function preload() {
+      var _this = this;
+
       this.load.image("wm_bg000", './assets/graphics/backgrounds/wm_bg000.png');
       this.load.image("mm_bg000", './assets/graphics/backgrounds/mm_bg000.png');
       this.load.image("vagina_000", './assets/graphics/backgrounds/backgroundDeco/vagina_000.png');
@@ -256,11 +258,25 @@ var introScene = /*#__PURE__*/function (_Phaser$Scene) {
       this.load.image("quit", './assets/graphics/ui/quit.png');
       this.load.image("dicky000", './assets/graphics/player/dicky000.png');
       this.load.image("dicky001", './assets/graphics/player/dicky001.png');
+      this.load.audio("000", './assets/audio/music/000.mp3');
+      var loadingBar = this.add.graphics({
+        fillStyle: {
+          color: 0xffffff
+        }
+      });
+      this.load.on("progress", function (percent) {
+        loadingBar.fill(0, 300, 400 * percent, 50);
+        console.log(percent);
+      });
+      this.load.on("complete", function () {
+        console.log('done');
+
+        _this.scene.start(_CST.CST.SCENES.MENU);
+      });
     }
   }, {
     key: "create",
-    value: function create() {
-      this.scene.start(_CST.CST.SCENES.MENU);
+    value: function create() {//this.scene.start(CST.SCENES.MENU);
     }
   }, {
     key: "update",
@@ -304,9 +320,6 @@ function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Re
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
 var spinner000;
-var playbutton;
-var settingsbutton;
-var quitbutton;
 
 var menuScene = /*#__PURE__*/function (_Phaser$Scene) {
   _inherits(menuScene, _Phaser$Scene);
@@ -332,10 +345,15 @@ var menuScene = /*#__PURE__*/function (_Phaser$Scene) {
     value: function create() {
       this.add.image(0, -100, 'mm_bg000').setOrigin(0, 0).setDepth(0);
       spinner000 = this.add.image(398, 320, 'spinner000').setDepth(1).setScale(1.05);
-      playbutton = this.add.image(230, 230, 'play').setDepth(4);
-      settingsbutton = this.add.image(550, 330, 'settings').setDepth(4);
-      quitbutton = this.add.image(400, 520, 'quit').setDepth(4);
+      var playbutton = this.add.image(230, 230, 'play').setDepth(4);
+      var settingsbutton = this.add.image(550, 330, 'settings').setDepth(4);
+      var quitbutton = this.add.image(400, 520, 'quit').setDepth(4);
       this.add.image(400, 300, 'vagina_000').setDepth(3);
+      this.sound.play('000', {
+        loop: true,
+        volume: 0.01
+      });
+      playbutton.setInteractive();
       playbutton.on('pointerdown', function () {
         console.log('play clicked');
       });
@@ -394,7 +412,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49344" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50386" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
